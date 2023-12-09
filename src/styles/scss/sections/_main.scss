@@ -1,36 +1,73 @@
+@use "../mixins/mixins" as *;
+
 .main {
   position: relative;
   height: max-content;
-  max-width: 970px;
   grid-area: main;
   background-color: white;
-  border-radius: 20px;  
-  margin-left: 70px;
-  &::after {
-    content: "";
-    position: absolute;
-    top: 165px;
-    width: 100%;
-    height: 1px;
-    background-color: #EEEEEE;
-  }  
+  border-radius: 20px;
+  @include lg-min {
+    margin-left: 70px;
+  }
+  @include lg {
+    overflow-x: scroll;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  @include md-min {
+    &::after {
+      content: "";
+      position: absolute;
+      top: 165px;
+      width: 100%;
+      height: 1px;
+      background-color: #EEEEEE;
+    }  
+  }
 }
 
 .customers {
   padding: 30px 40px;
-  &__head {
-    display: grid;
-    grid-template-areas: 
-    "title search"
-    "active search";
+  @include sm {
+    padding: 15px;
+  }
+  &__head {    
+    display: grid;   
     justify-content: space-between;
     align-items: center;
     padding-bottom: 40px;
+    
+    @include md-min {
+      width: 90%;
+      grid-template-areas: 
+      "title search"
+      "active search";
+    }
+
+    @include md {
+      grid-template-areas: 
+      "title"
+      "active"
+      "search";
+      justify-content: center;
+      justify-items: center;
+      row-gap: 15px;
+    }
+    
+    @include xs {
+      text-align: center;
+    }
     &-title {
+      @include md-min {
+        font-size: 22px;
+      }
+
+      @include md {
+        font-size: 16px;
+      }
       padding-bottom: 7px;
       grid-area: title;
       font-weight: 600;
-      font-size: 22px;
     }
 
     &-active {
@@ -53,11 +90,19 @@
       background-size: 13%;
       background-position: 8px center;
       transition: all .6s;
-
+      @include sm {
+        background-size: 8%;
+        width: 50%;
+        max-height: 15px;
+      }
       &::placeholder {      
         padding-left: 40px;
         font-size: 12px;
         color: #B5B7C0;
+        @include sm {
+          padding-left: 15px;
+          font-size: 9px;
+        }
       }
 
       &:focus {
@@ -68,10 +113,20 @@
   }
 
   &__list {
+    @include lg {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     &-title {
       padding-bottom: 20px;
       display: grid;
-      grid-template-columns: 170px 130px 155px 205px 155px 1fr;
+      @include md-min {
+        grid-template-columns: 170px 130px 155px 205px 155px 1fr;
+      }
+      @include md {
+        display: none;
+      }
       font-weight: 500;
       font-size: 14px;
       color: #B5B7C0;
@@ -81,7 +136,13 @@
       font-size: 14px;
       color: #292D32;
       display: grid;
-      grid-template-columns: 170px 130px 155px 205px 140px 1fr;
+      @include md-min {
+        grid-template-columns: 170px 130px 155px 205px 140px 1fr;
+      }
+      @include sm {
+        font-size: 11px;
+        justify-items: center;
+      }
       padding-top: 17px;
       padding-bottom: 17px;
       border-bottom: 1px solid #EEEEEE;
@@ -126,10 +187,16 @@
     align-items: center;
     padding-top: 30px;
     padding-bottom: 10px;
+    @include md {
+      justify-content: center;
+    }
     &-content {
       font-weight: 500;
       font-size: 14px;
       color: #B5B7C0;
+      @include md {
+        display: none;
+      }
     }
 
     &-actions {
@@ -152,7 +219,14 @@
         color: #FFFFFF;
         transition: all .6s;
       }
+      @include xs {
+        display: none;
+      }
     }
 
   }
+}
+
+.sm {
+  display: block;
 }

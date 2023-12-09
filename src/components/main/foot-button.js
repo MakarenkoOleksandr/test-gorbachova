@@ -41,13 +41,13 @@ const FootButtons = () => {
 
   return (
     <div className="customers__foot-actions">
-      <button className="customers__foot-btn" onClick={handlePrevClick}>
+      <button className="customers__foot-btn sm" onClick={handlePrevClick}>
         {"<"}
       </button>
       {renderPageButtons()}
       {totalPages > 4 && <span className="customers__foot-dots">...</span>}
       <button className="customers__foot-btn">{totalPages}</button>
-      <button className="customers__foot-btn" onClick={handleNextClick}>
+      <button className="customers__foot-btn sm" onClick={handleNextClick}>
         {">"}
       </button>
     </div>

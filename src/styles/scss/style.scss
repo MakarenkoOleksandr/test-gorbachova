@@ -1,4 +1,4 @@
-@import "normalize.scss";
-@import "common/";
-@import "mixins/";
-@import "sections/";
+@use "normalize.scss";
+@use "common/" as *;
+@use "mixins/" as *;
+@use "sections/" as *;

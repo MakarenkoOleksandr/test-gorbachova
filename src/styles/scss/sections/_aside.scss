@@ -1,4 +1,4 @@
-@import "../mixins/";
+@use "../mixins/mixins" as *;
 
 .aside {
   background-color: #FFFFFF;
@@ -52,6 +52,9 @@
       position: relative;
       font-weight: 600;
       font-size: 26px;
+      @include sm {
+        font-size: 16px;
+      }
 
       &::after {
         content: 'v.01';
@@ -61,6 +64,9 @@
         font-weight: 500;
         font-size: 10px;
         color: #838383;
+        @include sm {
+          bottom: 2px;
+        }
       }
 
     }
@@ -69,8 +75,7 @@
   &__wrap {
     display: flex;
     flex-direction: column;
-    gap:20px
-    @include{}
+    gap:20px    
   }
 
   &__item {
@@ -78,6 +83,9 @@
     padding: 0.7em;
     cursor: pointer;
     color: #9197B3;
+    @include sm {
+      padding: 0.2em;
+    }
 
     &.active {
       background-color: #5932EA;
