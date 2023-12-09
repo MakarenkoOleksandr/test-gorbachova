@@ -1,3 +1,5 @@
+@import "../mixins/";
+
 .aside {
   background-color: #FFFFFF;
   padding: 30px;
@@ -41,7 +43,7 @@
     display: flex;
     gap: 15px;
     align-items: center;
-    padding-bottom: 65px;
+    padding-bottom: 50px;
 
     &-title {
       display: flex;
@@ -68,6 +70,7 @@
     display: flex;
     flex-direction: column;
     gap:20px
+    @include{}
   }
 
   &__item {
@@ -75,12 +78,14 @@
     padding: 0.7em;
     cursor: pointer;
     color: #9197B3;
+
     &.active {
       background-color: #5932EA;
-      border-radius: 15px;
+      border-radius: 8px;
       transition: all .7s;
       color: white;
     }
+
     &:not(:first-of-type)::after {
       content: "";
       position: absolute;
@@ -90,6 +95,19 @@
       height: 10px;
       width: 6px;
       background-image: url('./../../../img/menu/menu-arrow.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    &.active:not(:first-of-type)::after {
+      content: "";
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 10px;
+      width: 6px;
+      background-image: url('./../../../img/menu/menu-arrow_active.svg');
       background-repeat: no-repeat;
       background-size: contain;
     }
@@ -110,7 +128,5 @@
       height: 24px;
       width: 24px;
     }
-
-    &-content {}
   }
 }

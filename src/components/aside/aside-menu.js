@@ -1,13 +1,13 @@
-import menu from "./../props/menu";
-import logo from "./../img/logo.svg";
 import { useState } from "react";
+import menu from "../../props/menu";
+import logo from "./../../img/logo.svg";
 
-const AsideMenu = () => {
-  const [active, setActive] = useState(null);
+const AsideMenu = ({ setActiveMenu }) => {
+  const [active, setActive] = useState(2);
   const setActiveEl = (index) => {
     setActive(index);
+    setActiveMenu(index);
   };
-
   return (
     <nav className="aside__navigation-menu menu">
       <div className="menu__logo">
@@ -18,7 +18,7 @@ const AsideMenu = () => {
       <ul className="menu__wrap">
         {menu.name.map((el, index) => {
           const isActive = index === active;
-          const imagePath = require(`./../img/menu/${el.toLowerCase()}_${
+          const imagePath = require(`./../../img/menu/${el.toLowerCase()}_${
             isActive ? "active" : "normal"
           }.svg`);
 
